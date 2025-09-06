@@ -1,5 +1,3 @@
-// MANDATORY CUSTOM LOGGER — NO console.log ALLOWED
-
 class FrontendLogger {
   constructor() {
     this.logLevel = process.env.REACT_APP_LOG_LEVEL || 'INFO';
@@ -14,12 +12,9 @@ class FrontendLogger {
         message,
         ...meta
       };
-      // In real app, send to backend logging endpoint
-      // For now, we simulate by storing in localStorage or sending to /log
       localStorage.setItem('lastLog', JSON.stringify(logEntry));
     }
   }
-
   error(message, meta) { this.log('ERROR', message, meta); }
   warn(message, meta) { this.log('WARN', message, meta); }
   info(message, meta) { this.log('INFO', message, meta); }
@@ -27,4 +22,5 @@ class FrontendLogger {
 }
 
 const logger = new FrontendLogger();
+
 export default logger;
